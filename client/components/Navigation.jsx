@@ -22,15 +22,15 @@ class Navigation extends Component {
         <div>
           <Container>
             <Row className = " justify-content-md-center" > 
-              <Form inline className ="search-input">
+              <Form inline className ="search-input" action = "#">
                 {/* <Lottie options={defaultOptions} height={400} width={400} /> */}
                 <h1 className="mr-sm-2" >Personal Pet Finder</h1>
-                <FormControl type="text" placeholder="Enter Zip Code" className="mr-sm-2" />
-                <Form.Control className="mr-sm-2" as="select">
+                <FormControl type="text" placeholder="Enter Zip Code" className="mr-sm-2" onChange={this.props.handleSearch}/>
+                <Form.Control className="mr-sm-2" as="select" onChange={this.props.handleSearch}>
                   <option>Dog</option>
                   <option>Cat</option>
                 </Form.Control>
-                <Button variant="outline-success" type="button" onClick={this.props.handleSearch}>Search</Button>
+                <Button variant="outline-success" type="submit" onClick={()=> this.props.handleSearch('submit')}>Search</Button>
               </Form>
             </Row>
           </Container>

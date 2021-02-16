@@ -20,17 +20,20 @@ module.exports = {
     // headers: { 'Access-Control-Allow-Origin': '*' },
     proxy: {
 
-      '/': {
+      '/petfinder/**': {
         target: 'http://localhost:3000',
         secure: false,
         changeOrigin: true,
         // pathRewrite: { '^/api': '' }
       },
-      // '/assets/**': {
-      //   target: 'http://localhost:3000',
-      //   secure: false,
-      //   changeOrigin: true,
-      // },
+
+      '/db/**': {
+        target: 'http://localhost:3000',
+        secure: false,
+        changeOrigin: true,
+        // pathRewrite: { '^/api': '' }
+      },
+
     },
     hot: true,
   },
