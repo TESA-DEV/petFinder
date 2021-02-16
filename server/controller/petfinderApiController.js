@@ -11,7 +11,7 @@ petController.search = (req,res,next) =>{
   .then(function (query) {
  // Do something with `response.data.animals`
   res.locals.query = query.data;
-  console.log('pet controller', query.data)
+  console.log('pet controller hghghg', query.data)
  
   next();
   })

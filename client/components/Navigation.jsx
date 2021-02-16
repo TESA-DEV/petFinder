@@ -48,12 +48,12 @@ class Navigation extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className ="justify-content-center"> 
             <Form inline className = "justify-content-center" >
-              <FormControl type="text" placeholder="Enter Zip Code" className="mr-sm-2" />
-              <Form.Control className="mr-sm-2" as="select">
+              <FormControl type="text" placeholder="Enter Zip Code" className="mr-sm-2" onChange={this.props.handleSearch}/>
+              <Form.Control className="mr-sm-2" as="select" onChange={this.props.handleSearch}>
                 <option>Dog</option>
                 <option>Cat</option>
               </Form.Control>
-              <Button variant="outline-success" type="button" onClick={this.props.handleSearch}>Search</Button>
+              <Button variant="outline-success" type="submit" onClick={()=> this.props.handleSearch('submit')}>Search</Button>
             </Form>
             
             </Nav>

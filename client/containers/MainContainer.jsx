@@ -6,6 +6,8 @@ import { Col, Row } from 'react-bootstrap';
 import PetContainer from './PetContainer';
 import Navigation from '../components/Navigation';
 import styles from '../styles.css';
+import realFakeData from '../FakeModel/realFakeData';
+import fakeData from '../FakeModel/fakeData';
 
 class MainContainer extends Component {
   constructor() {
