@@ -15,25 +15,14 @@ mongoose.connect(MONGO_URI, {
 
 const Schema = mongoose.Schema;
 
-//Create schema for pet database
-const petSchema = new Schema({
-  type: {
-    type: String,
-    required: true},
-  breed: {
-    type: String,
-    required: true},
-  size: {
-    type: String,
-    required: true},
-  age: {
-    type: String,
-    required: true},
-  location: {
-    type: String,
-    required: true}
+//Create schema for user database
+const userSchema = new Schema({
+  username: String,
+  pets: Array,
+  
 });
 
 //Create model for pet database
-const Pet = mongoose.model('Pet', petSchema);
-module.exports = Pet
+const User = mongoose.model('user', userSchema);
+
+module.exports = User;
