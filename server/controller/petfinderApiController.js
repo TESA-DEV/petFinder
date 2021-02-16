@@ -5,8 +5,8 @@ const petfinder = require("@petfinder/petfinder-js");
 const petSearch = new petfinder.Client({apiKey: secret.petApiKey, secret: secret.petApiSecret});
 
 const petController = {};
-
-petController.search = (req,res,next) =>{
+//find all pets in local area by type
+petController.search = (req,res,next) => {
   petSearch.animal.search({type: req.params.type, location: req.params.location})
   .then(function (query) {
  // Do something with `response.data.animals`
@@ -23,32 +23,16 @@ petController.search = (req,res,next) =>{
   }); 
 } 
 
-    // async function showAnimals(animalType, location) {
-    //     let page = 1;
-    //     do {
-    //       apiResult = await petfinder.animal.search({
-    //         type: animalType,
-    //         location: location,
-    //         page,
-    //         limit: 100,
-    //       });
-    //       let dogIdx = (page - 1) * 100;
-    //       apiResult.data.animals.forEach(function(animal) {
-    //         console.log(` -- ${++dogIdx}: ${animal.name} id: ${animal.id} url: ${animal.url}`);
-    //       });
-      
-    //       page++;
-    //     } while(apiResult.data.pagination && apiResult.data.pagination.total_pages >= page);
-    //   }
-
+//find all pets in DB by id
+petController.display = (req,res,next) => {
+  const arrOfPetData = [];
+  console.log('hello displayyy middleware')
+  for (let i = 0; i < res.locals.listOfPets.length; i++){
+    fetch(`https://api.petfinder.com/v2/animals/${listOfPets[i]}`)
+    .then(data => arrOfPetData.push(data))
+  }
+  res.locals.arrOfPetData = arrOfPetData;
+  return next();
+}
 
 module.exports = petController;
-
-// client.animal.search({
-//     type: "Dog",
-//     breed: "Bernedoodle",
-//     page: 1,
-//     limit: 100,
-//   }).then(resp => {
-//     // Do something with resp.data.animals
-//   });

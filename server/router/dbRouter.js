@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const itemController = require('../controller/petControllers.js');
-
-//responding to post request to add new item to DB
+const petController = require('../controller/petfinderApiController.js')
+// responding to post request to add new item to DB
 router.post('/', 
-  itemController.createItem, 
+  itemController.createUser, 
   (req, res) => {
     res.status(200).json({});
   }
@@ -12,25 +12,35 @@ router.post('/',
 
 //responding to get request to get all items in DB
 router.get('/', 
-  itemController.readItem, 
+  itemController.displayList, 
+  // petController.display,
   (req, res) => {
-    res.status(200).json(res.locals.query);
+    console.log(req)
+    res.status(200).json(res.locals.arrOfPetsData);
   }
 );
 
-// router.put('/', 
-//   itemController.updateItem, 
-//     req, res)=>{
-        
-//   }
-// )
-
-//responding to delete request to remove item from DB
-router.delete('/', 
-    itemController.deleteItem, 
+// //responding to update request to add pet
+router.put('/add', 
+  itemController.addPet, 
+    (req, res)=>{
+     res.status(200).json({});
+  }
+);
+// responding to update request to remove pet
+router.put('/remove', 
+  itemController.deletePet,
     (req, res)=>{
       res.status(200).json({});
-    }
+  }
 )
+
+//responding to delete request to remove item from DB
+// router.delete('/', 
+// itemController.deleteUser, 
+//     (req, res)=>{
+//       res.status(200).json({})
+//     }
+// )
 
 module.exports = router;
